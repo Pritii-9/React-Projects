@@ -27,6 +27,7 @@ function Home() {
   const handleSearch = async (e) => {
     e.preventDefault();
     if (!searchQuery.trim()) return;
+    if(loading) return;
     try {
       const searchedMovies = await searchMovies(searchQuery);
       setMovies(searchedMovies);
@@ -50,6 +51,7 @@ function Home() {
           Search
         </button>
       </form>
+      {error && <div className="error-message">{error}</div>}
       {loading ? (
         <p>Loading...</p>
       ) : error ? (
