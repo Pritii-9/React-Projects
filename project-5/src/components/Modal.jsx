@@ -9,18 +9,16 @@ const Modal = ({ onClose, isOpen, children }) => {
   return createPortal(
     <>
       {isOpen && (
-        <>
-          <div className="relative m-auto min-h-[200px] z-50 max-w-[80%] p-4 bg-white">
+        <div
+         className="backdrop-blur-md grid place-items-center z-40 h-screen w-screen absolute top-0">
+          <div className="relative m-auto min-h-[200px] z-50 min-w-[80%] p-4 bg-white">
             <div className="flex justify-end">
               <AiOutlineClose onClick={onClose} className="text-2xl self-end" />
             </div>
             {children}
           </div>
-          <div
-            onClick={onClose}
-            className="backdrop-blur-md z-40 h-screen w-screen absolute top-0"
-          />
-        </>
+      
+        </div>
       )}
     </>,
     modalRoot
